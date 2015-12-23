@@ -22,6 +22,9 @@ def FileUpload(type):
   file_Sensor_log = logdir + today + "_" + type + "_SENSOR.log"
   file_Upload = logdir + today + ctime + "_" + mac + "_" + type + "_Upload.txt"
 
+  if os.path.exists(file_Status) == False:
+    os.system("touch " + file_Status) 
+
   f_Status_read = open(file_Status, "r")
   f_Upload = open(file_Upload, "w")
   f_Usonic = open(file_Sensor_log, "r")
@@ -53,9 +56,12 @@ def FileUpload(type):
   line_cnt = 1
   reader = csv.reader(f_Usonic)
   for row in reader:
+    print row
     if cnt > int(fline):
       if row[1].isdigit():
+        print int(row[1])
         total += int(row[1])
+        print total
         line_cnt += 1
     cnt += 1
 
