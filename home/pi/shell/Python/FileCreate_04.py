@@ -22,7 +22,7 @@ while True:
   con_cnt = 0 
   while True:
     cnt += 1
-    if cnt == 100:
+    if cnt == 60:
       break
     if grovepi.digitalRead(water_sensor) == 1:
       result = 0
@@ -31,8 +31,9 @@ while True:
       result = 1
       con_cnt += 1
       if con_cnt == 3:
-        print "Warning !! This place fladded. Evacuate from here ASAP"
-        tw.setMsg('00')
+        msg = "Warning !! This place fladded. Evacuate from here ASAP"
+        print msg
+        tw.setMsg(msg)
         tw.sendMsg()
     distance = "%08d" % (result)
     f_Water.write(today + ctime + "," + distance + "\n") 

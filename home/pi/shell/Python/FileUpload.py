@@ -7,8 +7,10 @@ import time
 import csv
 import zipfile
 import subprocess
+import commands
 
 logdir="/home/pi/shell/log/"
+mac=commands.getoutput("/sbin/ifconfig -a | grep HWaddr | awk '{print $NF}' | sed -e 's/://g'")
 
 def FileUpload(type):
   now = datetime.now()
@@ -16,9 +18,9 @@ def FileUpload(type):
   ctime = datetime.now().strftime("%H%M")
 
   file_Status= logdir + "dateCheck.properties_" + type
-  file_Log= logdir + "FileUpload_" + today + ".log"
+  file_Log= logdir + "FileUpload_" + today + "_" + type + ".log"
   file_Sensor_log = logdir + today + "_" + type + "_SENSOR.log"
-  file_Upload = logdir + today + ctime + "_" + type + "_Upload.txt"
+  file_Upload = logdir + today + ctime + "_" + mac + "_" + type + "_Upload.txt"
 
   f_Status_read = open(file_Status, "r")
   f_Upload = open(file_Upload, "w")
@@ -44,7 +46,7 @@ def FileUpload(type):
     file_Sensor_log_old = daybef + "_" + type + "_SENSOR.log"
     zf = zipfile.ZipFile(logdir + "old/" + file_Sensor_log_old +  ".zip", "w")
     zf.write(logdir + file_Sensor_log_old, file_Sensor_log_old)
-    f_Log.write(file_sensor_log_old + " moved and compressed\n")
+    f_Log.write(file_Sensor_log_old + " moved and compressed\n")
 
   total = 0
   cnt = 1

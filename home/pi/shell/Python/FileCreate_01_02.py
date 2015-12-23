@@ -18,7 +18,7 @@ while True:
   while True:
     cnt += 1
     try:
-      if cnt == 100:
+      if cnt == 60:
         break
       [ temp,hum ] = dht(dht_sensor_port,0)
       s_temp = "%08d" % int(temp)
@@ -28,6 +28,6 @@ while True:
       s_hum = "Error"
     f_Temp.write(today + time + "," + s_temp + "\n") 
     f_Hum.write(today + time + "," + s_hum + "\n") 
-    sleep(1)
+    time.sleep(1)
   f_Temp.close() 
   f_Hum.close() 

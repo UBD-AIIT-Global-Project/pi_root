@@ -21,9 +21,9 @@ while True:
   cnt = 0
   while True:
     cnt += 1
-    if cnt == 100:
+    if cnt == 60:
       break
     distance = ultrasound.measure()
     distance = "%08d" % (distance)
     f_Usonic.write(today + ctime + "," + distance + "\n") 
-    time.sleep(0.5)
+    time.sleep(1)
