@@ -9,7 +9,7 @@ logdir="/home/pi/shell/log/"
 
 while True:
   today = datetime.now().strftime("%Y%m%d")
-  time = datetime.now().strftime("%H%M")
+  ctime = datetime.now().strftime("%H%M")
   file_Temp = logdir + today + "_01_SENSOR.log"
   file_Hum = logdir + today + "_02_SENSOR.log"
   f_Temp = open(file_Temp, "a")
@@ -26,8 +26,8 @@ while True:
     except:
       s_temp = "Error"
       s_hum = "Error"
-    f_Temp.write(today + time + "," + s_temp + "\n") 
-    f_Hum.write(today + time + "," + s_hum + "\n") 
+    f_Temp.write(today + ctime + "," + s_temp + "\n") 
+    f_Hum.write(today + ctime + "," + s_hum + "\n") 
     time.sleep(1)
   f_Temp.close() 
   f_Hum.close() 

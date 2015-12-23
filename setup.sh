@@ -1,10 +1,9 @@
 #!/bin/sh
 
-sudo su -
 apt-get -y update
 apt-get -y upgrade
 cd /home/pi
-mkdir -p shell/Python shell/logs
+mkdir -p shell/Python shell/log
 git clone https://github.com/DexterInd/GrovePi.git
 cd /home/pi/shell
 cp -pfr /home/pi/GrovePi/Software/Python/ .
@@ -47,6 +46,15 @@ cd python-twitter-*
 python setup.py install
 
 apt-get -y install chkconfig
+apt-get -y install i2c-tools python-smbus
+
+cat >> /etc/modules <<EOF
+i2c-bcm2708 
+EOF
+
+cat >> /boot/config.txt <<EOF
+dtparam=i2c_arm=on
+EOF
 
 cd /root
 git clone https://github.com/2015-GlobalPBL/pi_root.git
