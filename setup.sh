@@ -65,10 +65,10 @@ update-rc.d sensor03.sh defaults
 update-rc.d sensor04.sh defaults
 
 cat >> cron << EOF
-*/1 * * * * /home/pi/shell/Python/FileUpload_01.py > /dev/null 2>&1
-*/1 * * * * /home/pi/shell/Python/FileUpload_02.py > /dev/null 2>&1
-*/1 * * * * /home/pi/shell/Python/FileUpload_03.py > /dev/null 2>&1
-*/1 * * * * /home/pi/shell/Python/FileUpload_04.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_01.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_02.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_03.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_04.py > /dev/null 2>&1
 EOF
 
 crontab cron
