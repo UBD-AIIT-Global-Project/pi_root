@@ -7,6 +7,9 @@ mkdir -p shell/Python shell/log
 git clone https://github.com/DexterInd/GrovePi.git
 cd /home/pi/shell
 cp -pfr /home/pi/GrovePi/Software/Python/ .
+
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+python get-pip.py
 pip install awscli
 
 cd /home/pi
@@ -50,14 +53,14 @@ apt-get -y install i2c-tools python-smbus
 
 cat >> /etc/modules <<EOF
 i2c-bcm2708 
+i2c-dev
 EOF
 
 cat >> /boot/config.txt <<EOF
 dtparam=i2c_arm=on
 EOF
 
-cd /root
-git clone https://github.com/2015-GlobalPBL/pi_root.git
+cd /home/pi
 cp -Rp ./pi_root/* /
 
 update-rc.d sensor01_02.sh defaults
