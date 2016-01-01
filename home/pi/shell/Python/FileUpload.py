@@ -47,7 +47,7 @@ def FileUpload(type):
     daybef = now - timedelta(days=+1)
     daybef = daybef.strftime("%Y%m%d")
     file_Sensor_log_old = daybef + "_" + type + "_SENSOR.log"
-    if os.path.exists(file_Sensor_log_old) == False:
+    if os.path.exists(file_Sensor_log_old) == True:
       zf = zipfile.ZipFile(logdir + "old/" + file_Sensor_log_old +  ".zip", "w")
       zf.write(logdir + file_Sensor_log_old, file_Sensor_log_old)
       f_Log.write(file_Sensor_log_old + " moved and compressed\n")
