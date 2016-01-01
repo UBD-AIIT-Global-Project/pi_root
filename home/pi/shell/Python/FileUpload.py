@@ -44,12 +44,13 @@ def FileUpload(type):
 
   if fday != today:
     f_Log.write("Date changed\n")
-    daybef = now - timedelta(days=+2)
+    daybef = now - timedelta(days=+1)
     daybef = daybef.strftime("%Y%m%d")
     file_Sensor_log_old = daybef + "_" + type + "_SENSOR.log"
-    zf = zipfile.ZipFile(logdir + "old/" + file_Sensor_log_old +  ".zip", "w")
-    zf.write(logdir + file_Sensor_log_old, file_Sensor_log_old)
-    f_Log.write(file_Sensor_log_old + " moved and compressed\n")
+    if os.path.exists(file_Sensor_log_old) == False:
+      zf = zipfile.ZipFile(logdir + "old/" + file_Sensor_log_old +  ".zip", "w")
+      zf.write(logdir + file_Sensor_log_old, file_Sensor_log_old)
+      f_Log.write(file_Sensor_log_old + " moved and compressed\n")
 
   total = 0
   cnt = 1
