@@ -43,6 +43,7 @@ def FileUpload(type):
   f_Log.write("last processed line: " + fline + "\n")
 
   if fday != today:
+    fline = 1
     f_Log.write("Date changed\n")
     daybef = now - timedelta(days=+1)
     daybef = daybef.strftime("%Y%m%d")
@@ -53,7 +54,7 @@ def FileUpload(type):
       f_Log.write(file_Sensor_log_old + " moved and compressed\n")
 
   total = 0
-  cnt = 1
+  cnt = 0
   line_cnt = 1
   reader = csv.reader(f_Usonic)
   for row in reader:
