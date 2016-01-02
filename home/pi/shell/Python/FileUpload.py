@@ -45,7 +45,7 @@ def FileUpload(type):
   if fday != today:
     fline = 1
     f_Log.write("Date changed\n")
-    daybef = now - timedelta(days=+1)
+    daybef = now - timedelta(days=+2)
     daybef = daybef.strftime("%Y%m%d")
     file_Sensor_log_old = daybef + "_" + type + "_SENSOR.log"
     if os.path.exists(file_Sensor_log_old) == True:
