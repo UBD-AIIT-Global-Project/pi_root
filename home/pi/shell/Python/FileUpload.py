@@ -27,7 +27,7 @@ def FileUpload(type):
 
   f_Status_read = open(file_Status, "r")
   f_Upload = open(file_Upload, "w")
-  f_Usonic = open(file_Sensor_log, "r")
+  f_Sensor = open(file_Sensor_log, "r")
   f_Log = open(file_Log, "w")
   reader = csv.reader(f_Status_read)
 
@@ -56,7 +56,7 @@ def FileUpload(type):
   total = 0
   cnt = 0
   line_cnt = 1
-  reader = csv.reader(f_Usonic)
+  reader = csv.reader(f_Sensor)
   for row in reader:
     print row
     if cnt > int(fline):
