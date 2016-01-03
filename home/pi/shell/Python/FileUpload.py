@@ -10,7 +10,7 @@ import subprocess
 import commands
 
 logdir="/home/pi/shell/log/"
-mac=commands.getoutput("/sbin/ifconfig -a | grep HWaddr | awk '{print $NF}' | sed -e 's/://g'")
+mac=commands.getoutput("/sbin/ifconfig eth0 | grep HWaddr | awk '{print $NF}' | sed -e 's/://g'")
 
 def FileUpload(type):
   now = datetime.now()
