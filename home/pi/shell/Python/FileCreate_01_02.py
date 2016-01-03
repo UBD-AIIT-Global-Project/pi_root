@@ -18,11 +18,9 @@ while True:
   while True:
     cnt += 1
     try:
-      if cnt == 30:
+      if cnt == 60:
         break
       [ temp,hum ] = dht(dht_sensor_port,0)
-      print temp
-      print hum
       s_temp = "%08d" % int(temp)
       s_hum = "%08d" % int(hum)
     except:

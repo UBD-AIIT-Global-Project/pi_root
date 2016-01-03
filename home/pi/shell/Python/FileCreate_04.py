@@ -22,7 +22,7 @@ while True:
   con_cnt = 0 
   while True:
     cnt += 1
-    if cnt == 30:
+    if cnt == 60:
       break
     if grovepi.digitalRead(water_sensor) == 1:
       result = 0

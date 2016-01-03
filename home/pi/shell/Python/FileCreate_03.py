@@ -21,7 +21,7 @@ while True:
   cnt = 0
   while True:
     cnt += 1
-    if cnt == 30:
+    if cnt == 60:
       break
     distance = ultrasound.measure()
     distance = "%08d" % (distance)

@@ -4,9 +4,6 @@ apt-get -y update
 apt-get -y upgrade
 cd /home/pi
 mkdir -p shell/Python shell/log
-git clone https://github.com/DexterInd/GrovePi.git
-cd /home/pi/shell
-cp -pfr /home/pi/GrovePi/Software/Python/ .
 
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 python get-pip.py
