@@ -10,7 +10,7 @@ import subprocess
 import commands
 
 logdir="/home/pi/shell/log/"
-mac=commands.getoutput("/sbin/ifconfig -a | grep HWaddr | awk '{print $NF}' | sed -e 's/://g'")
+mac=commands.getoutput("/sbin/ifconfig eth0 | grep HWaddr | awk '{print $NF}' | sed -e 's/://g'")
 
 def FileUpload(type):
   now = datetime.now()
@@ -22,9 +22,12 @@ def FileUpload(type):
   file_Sensor_log = logdir + today + "_" + type + "_SENSOR.log"
   file_Upload = logdir + today + ctime + "_" + mac + "_" + type + "_Upload.txt"
 
+  if os.path.exists(file_Status) == False:
+    os.system("touch " + file_Status) 
+
   f_Status_read = open(file_Status, "r")
   f_Upload = open(file_Upload, "w")
-  f_Usonic = open(file_Sensor_log, "r")
+  f_Sensor = open(file_Sensor_log, "r")
   f_Log = open(file_Log, "w")
   reader = csv.reader(f_Status_read)
 
@@ -40,23 +43,27 @@ def FileUpload(type):
   f_Log.write("last processed line: " + fline + "\n")
 
   if fday != today:
+    fline = 1
     f_Log.write("Date changed\n")
-    daybef = now - timedelta(days=+1)
+    daybef = now - timedelta(days=+2)
     daybef = daybef.strftime("%Y%m%d")
     file_Sensor_log_old = daybef + "_" + type + "_SENSOR.log"
-    if os.path.exists(file_Sensor_log_old):
+    if os.path.exists(file_Sensor_log_old) == True:
       zf = zipfile.ZipFile(logdir + "old/" + file_Sensor_log_old +  ".zip", "w")
       zf.write(logdir + file_Sensor_log_old, file_Sensor_log_old)
       f_Log.write(file_Sensor_log_old + " moved and compressed\n")
 
   total = 0
-  cnt = 1
+  cnt = 0
   line_cnt = 1
-  reader = csv.reader(f_Usonic)
+  reader = csv.reader(f_Sensor)
   for row in reader:
+    print row
     if cnt > int(fline):
       if row[1].isdigit():
+        print int(row[1])
         total += int(row[1])
+        print total
         line_cnt += 1
     cnt += 1
 
