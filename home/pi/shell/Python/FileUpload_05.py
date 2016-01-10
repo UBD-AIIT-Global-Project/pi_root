@@ -16,10 +16,11 @@ def FileUpload():
   ctime = datetime.now().strftime("%H%M")
   file_Log= logdir + "FileUpload_" + today + "_" + type + ".log"
   file_Image = logdir + "05_SENSOR.jpg"
-  file_Upload = logdir + mac + "_" + type + "_Upload.jpg"
+  file_Upload = mac + "_" + type + "_Upload.jpg"
   f_Log = open(file_Log, "w")
 
   cmd = "/usr/local/bin/aws s3 cp " + file_Image + " s3://enpit2015-sensors/" + type + "/" + file_Upload + " --profile=enpit2015 --region=us-west-2"
+  print cmd
   subprocess.call( cmd, shell=True )
   f_Log.write(file_Upload + " uploaded to S3\n")
   f_Log.close()
