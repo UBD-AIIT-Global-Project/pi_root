@@ -34,11 +34,13 @@ while True:
     distance = "%08d" % (distance)
     print distance
     if distance <= threshold:
-      tw = TwitterSend()
-      msg = today + " " + ctime + " " + str(cnt) + " Warning !! This place fladded. Evacuate from here ASAP"
-      print msg
-      tw.setMsg(msg)
-      tw.sendMsg()
+      try:
+        msg = today + " " + ctime + " " + str(cnt) + " Warning !! This place fladded. Evacuate from here ASAP"
+        print msg
+        tw.setMsg(msg)
+        tw.sendMsg()
+      except:
+        print "twitter error" 
 
     f_Usonic.write(today + ctime + "," + distance + "\n") 
     time.sleep(1)
