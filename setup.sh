@@ -56,5 +56,6 @@ update-rc.d sensor01_02.sh defaults
 update-rc.d sensor03.sh defaults
 update-rc.d sensor04.sh defaults
 update-rc.d sensor05.sh defaults
+update-rc.d sensor06.sh defaults
 
 crontab /var/spool/cron/crontabs/root
