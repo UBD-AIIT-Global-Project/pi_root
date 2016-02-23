@@ -17,7 +17,7 @@ while True:
   today = datetime.now().strftime("%Y%m%d")
   ctime = datetime.now().strftime("%H%M")
   file_Water = logdir + today + "_04_SENSOR.log"
-  f_Water = open(file_Water, "w")
+  #f_Water = open(file_Water, "w")
   cnt = 0
   con_cnt = 0 
   while True:
@@ -36,5 +36,7 @@ while True:
         tw.setMsg(msg)
         tw.sendMsg()
     distance = "%08d" % (result)
+    f_Water = open(file_Water, "w")
     f_Water.write(today + ctime + "," + distance + "\n") 
+    f_Water.close()
     time.sleep(1)

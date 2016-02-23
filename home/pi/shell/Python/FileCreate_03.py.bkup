@@ -24,7 +24,7 @@ while True:
   today = datetime.now().strftime("%Y%m%d")
   ctime = datetime.now().strftime("%H%M")
   file_Usonic = logdir + today + "_03_SENSOR.log"
-  #f_Usonic = open(file_Usonic, "a")
+  f_Usonic = open(file_Usonic, "a")
   cnt = 0
   while True:
     cnt += 1
@@ -33,16 +33,12 @@ while True:
     distance = ultrasound.measure()
     distance = "%08d" % (distance)
     print distance
-    f_Usonic = open(file_Usonic, "a")
-    f_Usonic.write(today + ctime + "," + distance + "\n") 
-    f_Usonic.close()
-    if distance <= threshold:
-      try:
-        msg = today + " " + ctime + " " + str(cnt) + " Warning !! This place floodded. Evacuate from here ASAP"
-        print msg
-        tw.setMsg(msg)
-        tw.sendMsg()
-      except:
-        print "twitter error" 
+#    if distance <= threshold:
+#      tw = TwitterSend()
+#      msg = today + " " + ctime + " " + str(cnt) + " Warning !! This place fladded. Evacuate from here ASAP"
+#      print msg
+#      tw.setMsg(msg)
+#      tw.sendMsg()
 
+    f_Usonic.write(today + ctime + "," + distance + "\n") 
     time.sleep(1)

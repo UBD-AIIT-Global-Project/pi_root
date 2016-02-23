@@ -12,8 +12,8 @@ while True:
   ctime = datetime.now().strftime("%H%M")
   file_Temp = logdir + today + "_01_SENSOR.log"
   file_Hum = logdir + today + "_02_SENSOR.log"
-  f_Temp = open(file_Temp, "a")
-  f_Hum = open(file_Hum, "a")
+  #f_Temp = open(file_Temp, "a")
+  #f_Hum = open(file_Hum, "a")
   cnt = 0
   while True:
     cnt += 1
@@ -26,8 +26,10 @@ while True:
     except:
       s_temp = "Error"
       s_hum = "Error"
+    f_Temp = open(file_Temp, "a")
+    f_Hum = open(file_Hum, "a")
     f_Temp.write(today + ctime + "," + s_temp + "\n") 
     f_Hum.write(today + ctime + "," + s_hum + "\n") 
     time.sleep(1)
-  f_Temp.close() 
-  f_Hum.close() 
+    f_Temp.close() 
+    f_Hum.close() 
