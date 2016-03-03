@@ -5,3 +5,5 @@
 */5 * * * * /home/pi/shell/Python/FileUpload_02.py > /dev/null 2>&1
 */5 * * * * /home/pi/shell/Python/FileUpload_03.py > /dev/null 2>&1
 */5 * * * * /home/pi/shell/Python/FileUpload_04.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_05.py > /dev/null 2>&1
+*/5 * * * * /home/pi/shell/Python/FileUpload_06.py > /dev/null 2>&1
